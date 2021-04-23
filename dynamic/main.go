@@ -20,8 +20,6 @@ func main() {
 	webServer.Serve(1928)
 }
 
-//struct are go's equiv of classes but like not really object with functions \
-
 type WebServer struct {
 	routes map[string]func([]string) string
 }
@@ -52,16 +50,6 @@ func (ws *WebServer) handleConnection(connection net.Conn) {
 		connection.Write([]byte(result))
 		return
 	}
-
-	// if requestParts[1] == "/clubhouse" {
-	// 	message := "if goofy has a dog, and goofy is a dog....????"
-
-	// 	connection.Write([]byte("HTTP/1.1 200 OK\r\n"))
-	// 	connection.Write([]byte("Content-Type: text/plain; charset=UTF-8\r\n"))
-	// 	connection.Write([]byte("Content-Length: " + strconv.Itoa(len(message)) + "\r\n\r\n"))
-	// 	connection.Write([]byte(message + "\n"))
-	// 	return
-	// }
 
 	connection.Write([]byte("HTTP/1.1 404 Not Found\r\n"))
 	connection.Write([]byte("Content-Type: text/plain; charset=UTF-8\r\n"))
